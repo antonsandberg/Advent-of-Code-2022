@@ -1,11 +1,12 @@
 import time
+from string import ascii_lowercase, ascii_uppercase
 
 def main():
-    with open('input.txt') as f:
+    with open('Day 3\input.txt') as f:
         data = f.read().strip().split()
 
-    letters = "abcdefghijklmnopqrstuvwxyz"
-    LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    letters = ascii_lowercase
+    LETTERS = ascii_uppercase
     ALL_LETTERS = letters + LETTERS
     letter_ranks = {l:i+1 for i, l in enumerate(ALL_LETTERS)}
 
