@@ -22,7 +22,7 @@ def process_data(FILENAME):
 
 
 def main():
-    FILENAME = 'input.txt'
+    FILENAME = 'Day 5\input.txt'
     stacks, moves = process_data(FILENAME)
     stacks_2, _ = process_data(FILENAME)
     # Part 1
