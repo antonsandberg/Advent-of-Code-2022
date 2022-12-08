@@ -1,22 +1,23 @@
 import time
+from collections import defaultdict
 
 
 def process_data(FILENAME):
     with open(FILENAME) as f:
-        _, moves = f.read().split('\n\n')
+        unf, moves = f.read().split('\n\n')
     moves = moves.split('\n')
-    stacks = {  1: ['B', 'V', 'S', 'N', 'T', 'C', 'H', 'Q'],
-                2: ['W', 'D', 'B', 'G'],
-                3: ['F', 'W', 'R', 'T', 'S', 'Q', 'B'],
-                4: ['L', 'G', 'W', 'S', 'Z', 'J', 'D', 'N'],
-                5: ['M', 'P', 'D', 'V', 'F'],
-                6: ['F', 'W', 'J'],
-                7: ['L', 'N', 'Q', 'B', 'J', 'V'],
-                8: ['G', 'T', 'R', 'C', 'J', 'Q', 'S', 'N'],
-                9: ['J', 'S', 'Q', 'C', 'W', 'D', 'M']}
-    """stacks = {  1: ['Z', 'N'],
-                2: ['M', 'C', 'D'],
-                3: ['P']}"""
+    unf = unf.splitlines()
+    unf = unf[:-1]
+
+    stacks = defaultdict(list)
+    for line in unf:
+        maybe_crates = line[1::4]
+        for i, maybe_crate in enumerate(maybe_crates):
+            if maybe_crate != " ":
+                stacks[i+1].append(maybe_crate)
+        
+    for key, stack in stacks.items():
+        stacks[key] = stack[::-1]
 
     return stacks, moves
 
