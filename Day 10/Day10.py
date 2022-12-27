@@ -32,6 +32,28 @@ def main():
             i += 1
     
     print(sum(x_values))
+    x = 1
+    cycle = 0
+    i = 0
+    x_values = []
+    while cycle <= 220:
+        if data[i] == 'noop':
+            cycle += 1
+            i += 1
+            if cycle in [20, 60, 100, 140, 180, 220]:
+                x_values.append(x*cycle)
+        else:
+            _, val = data[i].split()
+            val = int(val)
+            x += val
+            cycle += 1
+            if cycle in [20, 60, 100, 140, 180, 220]:
+                x_values.append((x-val)*cycle)
+        # print(cycle)
+            cycle += 1
+            if cycle in [20, 60, 100, 140, 180, 220]:
+                x_values.append((x-val)*cycle)
+            i += 1
     
 
 
